@@ -1,0 +1,33 @@
+# Application
+.DS_Store
+!wp-content/mu-plugins/*
+wp-content/languages/
+wp-content/plugins/*
+wp-content/upgrade
+wp-content/uploads/*
+wp-src/
+
+# Dotenv
+.env
+!.env.example
+
+# Node Package Manager
+node_modules
+
+# Theme
+wp-content/themes/
+.sass-cache/*
+
+# Database backup
+db-backup/*.sql
+db-backup/*.tar.gz
+db-backup/*.zip
+db-backup/*.rar
+
+# Composer
+composer.phar
+/vendor/
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock

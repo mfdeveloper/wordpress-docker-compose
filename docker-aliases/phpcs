@@ -1,0 +1,16 @@
+#!/bin/sh
+COMMAND=`basename "$0"`
+docker run \
+    --rm \
+    -i \
+    --env-file "$PWD/.env" \
+    --network=host \
+    -v "$HOME":"$HOME":ro \
+    -v "$PWD/wp-src":"/var/www/html" \
+    -v "$PWD/wp-content":"/var/www/html/wp-content" \
+    -v /tmp:/tmp \
+    -u $(id -u) \
+    -w "$PWD" \
+    mfdeveloper/wordpress-tools:latest \
+    $COMMAND "$@"
+exit $?

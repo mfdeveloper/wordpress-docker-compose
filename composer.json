@@ -1,0 +1,36 @@
+{
+    "name": "badassworld/presale-site",
+    "description": "Sistema/Portal de pré-vendas do grupo do facebook BadassWorld",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michel Felipe",
+            "email": "mfelipeof@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "wpackagist-plugin/loginizer":"1.4.0",
+        "wpackagist-plugin/jetpack":"6.3.2",
+        "wpackagist-plugin/akismet":"4.0.8",
+        "wp-phpunit/wp-phpunit":"4.9.8",
+        "league/climate": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "WpAutomation\\": "scripts/WpAutomation"
+        }
+    },
+    "scripts": {
+        "addTestFiles": "cd wp-src && wp config set DB_HOST $DB_TEST_HOST && cd /var/www/html && wp scaffold plugin-tests <plugin-name> --force --ci=circle && cd - && wp config set DB_HOST $DB_HOST",
+        "installWpTests": "WpAutomation\\Tests::install",
+        "test": "WpAutomation\\Tests::run"
+    }
+}

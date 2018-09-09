@@ -1,0 +1,14 @@
+#!/bin/sh
+tty=
+tty -s && tty=--tty
+docker run \
+       $tty \
+       -i \
+       --rm \
+       --network=host \
+       -v "$HOME":"$HOME":ro \
+       -u $(id -u) \
+       -w "$PWD" \
+       php:7.2-alpine "$@"
+
+exit $?

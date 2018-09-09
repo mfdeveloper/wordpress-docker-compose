@@ -1,0 +1,17 @@
+#!/bin/sh
+
+COMMAND=`basename "$0"`
+docker run \
+    --rm \
+    -it \
+    --env-file "$PWD/.env" \
+    --network=host \
+    -v "$HOME":"$HOME":ro \
+    -v "$PWD/wp-src":"/var/www/html" \
+    -v "$PWD/wp-content":"/var/www/html/wp-content" \
+    -v /tmp:/tmp \
+    -u $(id -u) \
+    mfdeveloper/wordpress-tools:latest \
+    $COMMAND --allow-root "$@"
+
+exit $?

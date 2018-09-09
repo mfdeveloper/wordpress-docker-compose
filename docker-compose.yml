@@ -1,0 +1,65 @@
+version: '3.1'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db-data:/var/lib/mysql
+       - ./db-backup:/backup
+     ports:
+       - "3306:3306"
+     restart: "no"
+     environment:
+       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+       MYSQL_DATABASE: ${DB_NAME}
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PASSWORD}
+
+   phpmyadmin:
+     image: phpmyadmin/phpmyadmin
+     ports:
+       - "8080:80"
+     restart: "no"
+     environment:
+       PMA_HOST: db
+       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PASSWORD}
+
+   wordpress:
+     image: mfdeveloper/wordpress-xdebug
+     depends_on:
+       - db
+     volumes:
+       - wp-code:/var/www/html
+       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+       - ./wp-content:/var/www/html/wp-content
+       - ./wp-src:/var/www/html
+       - wp-src:/usr/src/wordpress
+     ports:
+       - "8000:80"
+     restart: "no"
+     environment:
+       WORDPRESS_VERSION: 4.9.8
+       WP_ENV: ${WP_ENV}
+       WORDPRESS_DB_HOST: ${DB_HOST}
+       WORDPRESS_DB_USER: ${DB_USER}
+       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+       XDEBUG_VERSION: 2.6.0
+
+   wordpress-tools:
+     image: mfdeveloper/wordpress-tools
+     depends_on:
+       - wordpress
+     volumes:
+       - wp-code:/var/www/html
+       - ./wp-content:/var/www/html/wp-content
+       - .:/app
+       - /tmp:/tmp
+     env_file: 
+       - ./.env
+       
+volumes:
+   db-data:
+   wp-src:
+   wp-code:
