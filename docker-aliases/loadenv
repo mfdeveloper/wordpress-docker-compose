@@ -1,0 +1,24 @@
+#!/bin/sh
+
+ENV=".env"
+if [ ! -z "$1" ]
+then
+    ENV=$1
+fi
+echo $1
+# while read -r a
+# do
+#     if [[ $a = \#* ]] ; then
+#         continue
+#     fi
+#     echo "Exported $a"
+#     export $a; 
+# done < "$ENV"
+
+# grep -v '^#' < $ENV | { while read line; do export $line; echo "Exported $a"; done; }
+
+while read line; do
+  case "$line" in \#*) continue ;; esac
+  export $line;
+done < "$ENV"
+# source $ENV
