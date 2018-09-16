@@ -26,7 +26,11 @@
 
                     $result = system($command, $retVal);
                     if ($result && $retVal != 1) {
-                        self::climate()->blue($result);
+                        if (preg_match_all('/(wp_die)|(Fatal Error)/', $result)) {
+                            self::climate()->red($result);
+                        }else{
+                            self::climate()->blue($result);
+                        }
                     }else{
                         self::climate()->red($result);
                     }

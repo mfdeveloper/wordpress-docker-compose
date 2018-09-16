@@ -8,6 +8,7 @@ dumpSql () {
     if [ -z "$1" ]
     then
         echo "A docker CONTAINER name that running mysql is required!!"
+        exit 1
     else
         echo "Generating .sql backup from CONTAINER: $1"
         echo "Destination: ${BASEDIR}"
@@ -21,6 +22,7 @@ dumpFolder () {
     if [ -z "$1" ]
     then
         echo "A docker CONTAINER name that running mysql is required!!"
+        exit 1
     else
         echo "Generating .tar.gz backup of: /var/lib/mysql from CONTAINER: $1"
         docker exec -it $1 sh -c 'tar -czvf /backup/'${SQL_BACKUP_NAME}'.tar.gz /var/lib/mysql'
@@ -31,7 +33,7 @@ restoreSql() {
     if [ -z "$1" ]
     then
         echo "A docker CONTAINER name that running mysql is required!!"
-
+        exit 1
     else
         echo "Importing .sql backup of: /var/lib/mysql from CONTAINER: $1"
         docker exec -it $1 sh -c 'mysql -u root -p"$MYSQL_ROOT_PASSWORD" < /backup/'${SQL_BACKUP_NAME}'.sql'
@@ -42,6 +44,7 @@ restoreFolder() {
     if [ -z "$1" ]
     then
         echo "A docker CONTAINER name that running mysql is required!!"
+        exit 1
     else
         echo "Importing .tar.gz backup to: /var/lib/mysql of CONTAINER: $1"
         echo "Source: ${BASEDIR}/mysql.databases.sqp"
