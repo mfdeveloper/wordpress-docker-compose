@@ -21,7 +21,8 @@
         "wpackagist-plugin/jetpack":"6.3.2",
         "wpackagist-plugin/akismet":"4.0.8",
         "wp-phpunit/wp-phpunit":"4.9.8",
-        "league/climate": "^3.4"
+        "league/climate": "^3.4",
+        "mikehaertl/php-shellcommand": "^1.4"
     },
     "autoload": {
         "psr-4": {

@@ -7,6 +7,10 @@ wp-content/upgrade
 wp-content/uploads/*
 wp-src/
 
+# Dotenv
+.env
+!.env.example
+
 # Node Package Manager
 node_modules
 
