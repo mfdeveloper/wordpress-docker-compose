@@ -27,7 +27,7 @@ services:
        MYSQL_PASSWORD: ${DB_PASSWORD}
 
    wordpress:
-     image: mfdeveloper/wordpress-xdebug
+     image: andreccosta/wordpress-xdebug
      depends_on:
        - db
      volumes:
@@ -45,7 +45,7 @@ services:
        WORDPRESS_DB_HOST: ${DB_HOST}
        WORDPRESS_DB_USER: ${DB_USER}
        WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
-       XDEBUG_VERSION: 2.6.0
+       XDEBUG_CONFIG: remote_host=172.17.0.1
 
    wordpress-tools:
      image: mfdeveloper/wordpress-tools

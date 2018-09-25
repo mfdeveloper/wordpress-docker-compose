@@ -1,10 +1,6 @@
 # Application
 .DS_Store
-!wp-content/mu-plugins/*
-wp-content/languages/
-wp-content/plugins/*
-wp-content/upgrade
-wp-content/uploads/*
+wp-content/
 wp-src/
 
 # Dotenv
