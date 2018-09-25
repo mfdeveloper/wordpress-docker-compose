@@ -1,19 +1,26 @@
 #!/bin/sh
 
 COMMAND=`basename "$0"`
-docker run \
-    --rm \
-    -it \
-    --env-file ./.env \
+WORKING_DIR="/app"
+DOCKER_CMD='docker run --rm'
+
+if [ -f "$PWD/.env" ]
+then
+    DOCKER_CMD=$DOCKER_CMD" --env-file $PWD/.env"
+fi
+DOCKER_CMD=$DOCKER_CMD" -i \
     --network=host \
-    -v "$PWD/wp-src":"/var/www/html" \
-    -v "$PWD/wp-content":"/var/www/html/wp-content" \
+    -v $HOME:$HOME:ro \
+    -v $PWD/wp-src:/var/www/html \
+    -v $PWD/wp-content:/var/www/html/wp-content \
     -v /tmp:/tmp \
-    -v $PWD:/app \
-    -v "$HOME/.composer":"$HOME/.composer" \
+    -v $PWD:$WORKING_DIR \
+    -v $HOME/.composer:$HOME/.composer \
     -u $(id -u):$(id -g) \
-    -w /app \
+    -w $WORKING_DIR \
     mfdeveloper/wordpress-tools:latest \
-    $COMMAND "$@"
+    $COMMAND $@"
+
+eval $DOCKER_CMD
 
 exit $?

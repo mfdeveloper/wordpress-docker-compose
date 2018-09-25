@@ -1,6 +1,6 @@
 #!/bin/sh
-
 COMMAND=`basename "$0"`
+
 DOCKER_CMD='docker run --rm'
 if [ -f "$PWD/.env" ]
 then
@@ -18,5 +18,4 @@ DOCKER_CMD=$DOCKER_CMD" -i \
     $COMMAND $@"
 
 eval $DOCKER_CMD
-
 exit $?

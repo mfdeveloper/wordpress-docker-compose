@@ -10,7 +10,6 @@
             "request": "launch",
             "port": 9000,
             "pathMappings": {
-                "/app": "${workspaceRoot}",
                 "/var/www/html/wp-content": "${workspaceRoot}/wp-content",
                 "/var/www/html/wp-includes": "${workspaceRoot}/wp-src/wp-includes",
                 "/var/www/html/wp-admin": "${workspaceRoot}/wp-src/wp-admin"

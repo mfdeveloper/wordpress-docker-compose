@@ -1,14 +1,18 @@
 #!/bin/sh
 tty=
 tty -s && tty=--tty
-docker run \
-       $tty \
-       -i \
-       --rm \
-       --network=host \
-       -v "$HOME":"$HOME":ro \
-       -u $(id -u) \
-       -w "$PWD" \
-       php:7.2-alpine "$@"
 
+DOCKER_CMD="docker run $tty -i --rm"
+if [ -f "$PWD/.env" ]
+then
+    DOCKER_CMD=$DOCKER_CMD" --env-file $PWD/.env"
+fi
+DOCKER_CMD=$DOCKER_CMD" -i \
+    --network=host \
+    -v $HOME:$HOME:ro \
+    -u $(id -u) \
+    -w $PWD \
+    php:7.2-alpine $@"
+
+eval $DOCKER_CMD
 exit $?
