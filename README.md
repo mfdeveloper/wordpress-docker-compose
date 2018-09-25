@@ -63,3 +63,7 @@ These scripts are used to configure/run [phpunit](https://phpunit.de/) tests of 
 
 ## Credits
 - Adapted from [lyzs90/vuewp](https://github.com/lyzs90/vuewp), and separated after the discussion on [lyzs90/vuewp!4](https://github.com/lyzs90/vuewp/pull/4) pull request
+
+## License
+
+[The MIT License (MIT)](LICENSE)
