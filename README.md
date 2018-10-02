@@ -53,6 +53,10 @@ These scripts are used to configure/run [phpunit](https://phpunit.de/) tests of 
 
 > **PS:** For run the commands below, you need stay on this root project folder, relative to [`composer.json`](./composer.json) file:
 
+- **addTestFiles**: Run `wp scaffold plugin-tests` with [wp-cli](https://wp-cli.org/) to generate files to configure tests
+
+> **Usage:** `composer addTestFiles --plugin <my-wp-plugin>`
+
 - **installWpTests**: Run `install-wp-tests.sh` file, to create `wordpress_test` database for tests
 
 > **Usage:** `composer installWpTests`
