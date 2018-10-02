@@ -22,7 +22,8 @@
         "wpackagist-plugin/akismet":"4.0.8",
         "wp-phpunit/wp-phpunit":"4.9.8",
         "league/climate": "^3.4",
-        "mikehaertl/php-shellcommand": "^1.4"
+        "mikehaertl/php-shellcommand": "^1.4",
+        "ulrichsg/getopt-php": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -31,7 +32,7 @@
     },
     "scripts": {
         "pre-package-install": "mkdir -p ./wp-content/plugins",
-        "addTestFiles": "cd wp-src && wp config set DB_HOST $DB_TEST_HOST && cd /var/www/html && wp scaffold plugin-tests <plugin-name> --force --ci=circle && cd - && wp config set DB_HOST $DB_HOST",
+        "addTestFiles": "WpAutomation\\Tests::generateFiles",
         "installWpTests": "WpAutomation\\Tests::install",
         "test": "WpAutomation\\Tests::run"
     }
