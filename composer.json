@@ -1,6 +1,6 @@
 {
-    "name": "wordpress/docker-compose-structure",
-    "description": "The docker-compose base structure to manage, install dependencies and run phpunit tests for wordpress plugins",
+    "name": "badassworld/presale-site",
+    "description": "Sistema/Portal de pré-vendas do grupo do facebook BadassWorld",
     "type": "project",
     "license": "MIT",
     "authors": [

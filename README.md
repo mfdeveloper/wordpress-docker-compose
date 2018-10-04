@@ -71,3 +71,8 @@ These scripts are used to configure/run [phpunit](https://phpunit.de/) tests of 
 ## License
 
 [The MIT License (MIT)](LICENSE)
+
+## TODO
+
+- [ ] A custom `composer` script to download a `.zip` file language-pack by  
+the current wp language, and store the `.mo` and `.po` file in `wp-content/languages/plugins/`

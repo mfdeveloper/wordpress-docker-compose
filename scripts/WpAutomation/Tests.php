@@ -6,6 +6,9 @@ use mikehaertl\shellcommand\Command;
 use GetOpt\GetOpt;
 use GetOpt\Option;
 
+/**
+ * @todo Create a script to download plugins language-packs from https://translate.wordpress.org/projects/wp-plugins/woocommerce/language-packs
+ */
 class Tests
 {
 
